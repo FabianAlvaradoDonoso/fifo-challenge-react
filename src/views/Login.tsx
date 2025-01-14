@@ -19,7 +19,7 @@ const Login = () => {
   }
 
   return (
-    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
       <h2 className="text-center text-2xl">Log in</h2>
       <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
         <div>
@@ -97,7 +97,7 @@ const Login = () => {
 
       <p className="mt-10 text-center text-sm/6 text-gray-500">
         Not a member?{' '}
-        <Link to="/register" className="font-semibold text-indigo-600 hover:text-indigo-500">
+        <Link to="/register" className="font-semibold text-white/80 hover:underline">
           Click here
         </Link>
       </p>

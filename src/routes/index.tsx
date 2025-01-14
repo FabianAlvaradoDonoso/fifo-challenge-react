@@ -3,10 +3,12 @@ import type { RouteObject } from 'react-router'
 import { Outlet } from 'react-router'
 import { lazy, Suspense } from 'react'
 import { MainLayout } from '@/layouts/MainLayout'
+import { AuthLayout } from '@/layouts/AuthLayout'
 
 const LandingPage = lazy(() => import('@/views/Landing'))
 const LoginPage = lazy(() => import('@/views/Login'))
 const RegisterPage = lazy(() => import('@/views/Register'))
+const HomePage = lazy(() => import('@/views/Home'))
 
 // ----------------------------------------------------------------------
 
@@ -26,13 +28,18 @@ export const routesSection: RouteObject[] = [
   },
   {
     path: '/login',
-    element: basicLayout(),
+    element: <AuthLayout>{basicLayout()}</AuthLayout>,
     children: [{ element: <LoginPage />, index: true }],
   },
   {
     path: '/register',
-    element: basicLayout(),
+    element: <AuthLayout>{basicLayout()}</AuthLayout>,
     children: [{ element: <RegisterPage />, index: true }],
+  },
+  {
+    path: '/home',
+    element: <AuthLayout>{basicLayout()}</AuthLayout>,
+    children: [{ element: <HomePage />, index: true }],
   },
 
   // No match

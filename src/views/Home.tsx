@@ -1,6 +1,6 @@
 import { useAuthContext } from '@/context/auth/useAuthContext'
 
-export const HomePage = () => {
+const HomePage = () => {
   const { userId, handleLogOut } = useAuthContext()
 
   return (
@@ -14,3 +14,5 @@ export const HomePage = () => {
     </section>
   )
 }
+
+export default HomePage
