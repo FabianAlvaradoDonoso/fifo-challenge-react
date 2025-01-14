@@ -26,12 +26,13 @@ export default defineConfig({
   resolve: {
     alias: [
       {
+        find: /^@\/(.+)/,
+        replacement: path.resolve(process.cwd(), 'src/$1'),
+      },
+
+      {
         find: /^~(.+)/,
         replacement: path.resolve(process.cwd(), 'node_modules/$1'),
-      },
-      {
-        find: /^src(.+)/,
-        replacement: path.resolve(process.cwd(), 'src/$1'),
       },
     ],
   },
