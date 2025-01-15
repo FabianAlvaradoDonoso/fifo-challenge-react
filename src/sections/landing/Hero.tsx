@@ -30,7 +30,7 @@ const technologies = [
 export function Hero() {
   return (
     <section>
-      <div className="mx-auto max-w-screen-xl bg-white px-4 py-8 text-center lg:py-16 dark:bg-gray-900">
+      <div className="mx-auto max-w-screen-xl bg-white px-4 py-8 text-center lg:py-16 dark:bg-gray-900/70">
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           FIFO Challenge
         </h1>

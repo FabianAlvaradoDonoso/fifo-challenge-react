@@ -3,6 +3,7 @@ import type { RouteObject } from 'react-router'
 import { Outlet } from 'react-router'
 import { lazy, Suspense } from 'react'
 import { paths, ROOTS } from '@/routes/paths'
+import { AuthLayout } from '@/layouts/AuthLayout'
 
 // ----------------------------------------------------------------------
 
@@ -22,11 +23,19 @@ export const authRoutes: RouteObject[] = [
     children: [
       {
         path: paths.auth.login,
-        element: <LoginPage />,
+        element: (
+          <AuthLayout>
+            <LoginPage />
+          </AuthLayout>
+        ),
       },
       {
         path: paths.auth.register,
-        element: <RegisterPage />,
+        element: (
+          <AuthLayout>
+            <RegisterPage />
+          </AuthLayout>
+        ),
       },
     ],
   },

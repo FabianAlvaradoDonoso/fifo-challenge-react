@@ -16,7 +16,7 @@ export const AuthLayout = ({ children }: { children: JSX.Element | JSX.Element[]
     }
 
     if (status === 'no-authenticated') {
-      router('/login')
+      router('/auth/login')
       setIsChecking(false)
     }
 
@@ -43,5 +43,11 @@ export const AuthLayout = ({ children }: { children: JSX.Element | JSX.Element[]
     )
   }
 
-  return <>{children}</>
+  return (
+    <div className="flex min-h-screen flex-col">
+      <main className="container mx-auto flex flex-grow items-center justify-center px-4 py-8">
+        {children}
+      </main>
+    </div>
+  )
 }

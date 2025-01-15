@@ -3,6 +3,7 @@ import type { RouteObject } from 'react-router'
 import { Outlet } from 'react-router'
 import { lazy, Suspense } from 'react'
 import { paths } from '@/routes/paths'
+import { MainLayout } from '@/layouts/MainLayout'
 
 // ----------------------------------------------------------------------
 
@@ -19,7 +20,7 @@ const AppLayout = () => (
 export const appRoutes: RouteObject[] = [
   {
     path: paths.home,
-    element: <>{AppLayout()}</>,
+    element: <MainLayout>{AppLayout()}</MainLayout>,
     children: [{ element: <IndexPage />, index: true }],
   },
 ]
