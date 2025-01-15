@@ -4,7 +4,7 @@ import { useForm } from '@/hooks/useForm'
 import { useAuthContext } from '@/context/auth/useAuthContext'
 
 const Login = () => {
-  const { handleLoginWithGoogle, handleLoginWithCredentials } = useAuthContext()
+  const { handleLoginWithGoogle, handleLoginWithCredentials, handleLoginGuest } = useAuthContext()
 
   const { handleChange, pass, email } = useForm({
     initialState: {
@@ -103,9 +103,9 @@ const Login = () => {
       </p>
 
       <p className="text-center text-sm/6 text-gray-500">
-        <Link to={paths.auth.register} className="font-semibold text-white/80 hover:underline">
-          Login as a guess
-        </Link>
+        <button className="font-semibold text-white/80 hover:underline" onClick={handleLoginGuest}>
+          Login as a guest
+        </button>
       </p>
     </div>
   )

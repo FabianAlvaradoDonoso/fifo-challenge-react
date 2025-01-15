@@ -16,6 +16,11 @@ const IndexPage = () => {
       return
     }
 
+    if (data.items.filter((el) => el === item).length > 0) {
+      toast.error('Item duplicated')
+      return
+    }
+
     if (data.items.length >= 5) {
       toast.error('You can only add up to 5 items')
       return
@@ -27,7 +32,7 @@ const IndexPage = () => {
     }
 
     setData(newItem)
-    saveItems(userId ? userId : '', newItem.items)
+    saveItems(userId ? userId : 'guest', newItem.items)
     setItem('')
   }
 
@@ -50,13 +55,15 @@ const IndexPage = () => {
             />
             <button
               type="submit"
-              className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              disabled={item === ''}
+              className={`${item === '' ? 'cursor-not-allowed opacity-50' : ''} w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}
             >
               Add Item
             </button>
           </form>
           <button
-            className="w-full rounded-lg border border-red-700 px-5 py-2.5 text-center text-sm font-medium text-red-700 hover:bg-red-800 hover:text-white dark:border-red-800 dark:text-red-500 dark:hover:bg-red-700 dark:hover:text-white dark:focus:ring-red-800"
+            disabled={data.items.length === 0}
+            className={`${data.items.length === 0 ? 'cursor-not-allowed opacity-50' : ''} w-full rounded-lg border border-red-700 px-5 py-2.5 text-center text-sm font-medium text-red-700 hover:bg-red-800 hover:text-white dark:border-red-800 dark:text-red-500 dark:hover:bg-red-700 dark:hover:text-white dark:focus:ring-red-800`}
             onClick={() => {
               if (data.items.length === 0) {
                 return
@@ -68,7 +75,7 @@ const IndexPage = () => {
               }
 
               setData(newItem)
-              saveItems(userId ? userId : '', newItem.items)
+              saveItems(userId ? userId : 'guest', newItem.items)
             }}
           >
             Attend item
@@ -78,16 +85,20 @@ const IndexPage = () => {
           <h2 className="w-auto text-center text-lg font-semibold text-gray-900 dark:text-white">
             Items
           </h2>
-          <ul className="w-auto rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-            {data.items.map((el, index) => (
-              <li
-                key={index}
-                className={`w-full rounded-t-lg border-gray-200 px-4 py-2 dark:border-gray-600 ${index !== data.items.length - 1 && 'border-b'}`}
-              >
-                {el}
-              </li>
-            ))}
-          </ul>
+          {data.items.length === 0 ? (
+            <p className="text-center text-sm text-gray-900 dark:text-white">No items added yet</p>
+          ) : (
+            <ul className="w-auto rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+              {data.items.map((el, index) => (
+                <li
+                  key={index}
+                  className={`w-full rounded-t-lg border-gray-200 px-4 py-2 dark:border-gray-600 ${index !== data.items.length - 1 && 'border-b'}`}
+                >
+                  {el}
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
       </div>
     </div>

@@ -1,11 +1,12 @@
 export interface IAuthStateContext {
   userId: string | null
   userName: string | null
-  status: 'checking' | 'authenticated' | 'no-authenticated'
+  status: 'checking' | 'authenticated' | 'no-authenticated' | 'guest'
   handleLoginWithGoogle: () => Promise<null | undefined>
   handleLoginWithCredentials: (password: string, email: string) => Promise<null | undefined>
   handleRegisterWithCredentials: (password: string, email: string) => Promise<null | undefined>
   handleLogOut: () => Promise<void>
+  handleLoginGuest: () => Promise<void>
 }
 
 export interface IConfigContext {

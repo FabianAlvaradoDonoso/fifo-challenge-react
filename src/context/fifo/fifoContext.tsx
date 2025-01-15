@@ -16,14 +16,26 @@ export const FifoProvider = ({ children }: IElement) => {
   const [data, setData] = useState<IFifo>({ userId: '', items: [] })
   const { userId } = useAuthContext()
 
-  const getItems = async (id: string) => {
+  const getItemsFirebase = async (id: string) => {
     const q = query(collection(FirebaseDb, 'fifo'), where('userId', '==', id))
     const querySnapshot = await getDocs(q)
     const d = querySnapshot.docs.map((dc) => dc.data())
     if (d.length) setData(d[0] as IFifo)
   }
 
-  const saveItems = async (id: string, items: string[]) => {
+  const getItemsGuest = async () => {
+    const d = localStorage.getItem('fifo')
+    if (d) setData(JSON.parse(d) as IFifo)
+  }
+
+  const getItems = async (id: string) => {
+    if (id === 'guest') {
+      return getItemsGuest()
+    }
+    return getItemsFirebase(id)
+  }
+
+  const saveItemsFirebase = async (id: string, items: string[]) => {
     try {
       const q = query(collection(FirebaseDb, 'fifo'), where('userId', '==', id))
       const querySnapshot = await getDocs(q)
@@ -47,11 +59,22 @@ export const FifoProvider = ({ children }: IElement) => {
     }
   }
 
-  useEffect(() => {
-    if (userId) {
-      getItems(userId)
+  const saveItemsGuest = async (id: string, items: string[]) => {
+    const d = JSON.stringify({ userId: id, items })
+    localStorage.setItem('fifo', d)
+  }
+
+  const saveItems = async (id: string, items: string[]) => {
+    if (id === 'guest') {
+      return saveItemsGuest(id, items)
     }
-  }, [userId])
+    return saveItemsFirebase(id, items)
+  }
+
+  useEffect(() => {
+    getItems(userId || 'guest')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <FifoContext.Provider

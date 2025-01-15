@@ -77,6 +77,11 @@ export const AuthProvider = ({ children }: IElement) => {
     return null
   }
 
+  const handleLoginGuest = async () => {
+    checking()
+    setSession({ userId: 'guest', status: 'guest', userName: 'Guest' })
+    navigate('/home')
+  }
   return (
     <AuthContext.Provider
       value={{
@@ -85,6 +90,7 @@ export const AuthProvider = ({ children }: IElement) => {
         handleLoginWithCredentials,
         handleRegisterWithCredentials,
         handleLogOut,
+        handleLoginGuest,
       }}
     >
       {children}
