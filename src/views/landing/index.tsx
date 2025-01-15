@@ -4,7 +4,7 @@ import { Description } from '@/sections/landing/Description'
 import { Technologies } from '@/sections/landing/Technologies'
 import { BusinessRules } from '@/sections/landing/BusinessRules'
 
-const LandingPage = () => (
+const IndexPage = () => (
   <>
     <Hero />
     <div className="mx-auto max-w-5xl p-6">
@@ -16,4 +16,4 @@ const LandingPage = () => (
   </>
 )
 
-export default LandingPage
+export default IndexPage

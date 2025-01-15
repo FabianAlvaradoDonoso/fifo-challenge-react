@@ -1,31 +1,67 @@
 import { Link } from 'react-router'
+import { paths } from '@/routes/paths'
+import { Fragment } from 'react/jsx-runtime'
 import GithubIcon from '@/components/icons/githubIcon'
 import SignInIcon from '@/components/icons/signInIcon'
+
+const technologies = [
+  {
+    name: 'React',
+    color: 'text-blue-700',
+    link: 'https://react.dev/',
+  },
+  {
+    name: 'Firebase',
+    color: 'text-red-600',
+    link: 'https://firebase.google.com/',
+  },
+  {
+    name: 'TypeScript',
+    color: 'text-blue-500',
+    link: 'https://www.typescriptlang.org/',
+  },
+  {
+    name: 'Tailwind CSS',
+    color: 'text-cyan-500',
+    link: 'https://tailwindcss.com/',
+  },
+]
 
 export function Hero() {
   return (
     <section>
       <div className="mx-auto max-w-screen-xl bg-white px-4 py-8 text-center lg:py-16 dark:bg-gray-900">
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-          FIFO Challenge React
+          FIFO Challenge
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-500 sm:px-16 lg:px-48 lg:text-xl dark:text-gray-400">
-          Este proyecto consiste en la creación de una aplicación web para la gestión de tareas
-          mediante un esquema <em className="italic">FIFO</em> (
-          <strong className="font-semibold">First In, First Out</strong>). Utiliza{' '}
-          <strong className="font-semibold text-cyan-400">React</strong>,{' '}
-          <strong className="font-semibold text-red-600">Firebase</strong>,
-          <strong className="font-semibold text-blue-500">TypeScript</strong> y{' '}
-          <strong className="font-semibold text-cyan-500">Tailwind CSS</strong>.
+          This project consists of creating a web application for task management using a{' '}
+          <em className="italic">FIFO</em> (
+          <strong className="font-semibold">First In, First Out</strong>) approach. It uses{' '}
+          {technologies.map((tech, index) => (
+            <Fragment key={index}>
+              <a
+                key={index}
+                href={tech.link}
+                target="_blank"
+                rel="noreferrer"
+                className={`font-semibold ${tech.color}`}
+              >
+                {tech.name}
+              </a>
+              {index < technologies.length - 1 ? ', ' : ''}
+            </Fragment>
+          ))}
+          .
         </p>
         <p className="mb-8 text-lg font-normal text-gray-500 sm:px-16 lg:px-48 lg:text-xl dark:text-gray-400">
-          Se centra en la autenticación de usuarios, almacenamiento de datos seguro y un diseño
-          responsivo, respetando reglas de negocio como evitar la duplicación de tareas y el
-          procesamiento de las mismas según su orden de inserción.
+          It focuses on user authentication, secure data storage, and a responsive design,
+          respecting business rules such as preventing duplicate tasks and processing them according
+          to their insertion order.
         </p>
         <div className="flex flex-col space-x-2 space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
           <Link
-            to="/login"
+            to={paths.auth.login}
             className="inline-flex items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
           >
             Sign In

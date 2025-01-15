@@ -1,15 +1,17 @@
 import { getAuth } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBrnEKBqPKmmHZ_LjJdQxiSB2qiqTnEtPo',
-  authDomain: 'fifo-challenge-react.firebaseapp.com',
-  projectId: 'fifo-challenge-react',
-  storageBucket: 'fifo-challenge-react.firebasestorage.app',
-  messagingSenderId: '826437308287',
-  appId: '1:826437308287:web:596ea6b8a0f8f252f2544a',
-  measurementId: 'G-NXWSXPT1QY',
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
+  measurementId: import.meta.env.VITE_MEASUREMENTID,
 }
 
 export const FirebaseApp = initializeApp(firebaseConfig)
 export const FirebaseAuth = getAuth(FirebaseApp)
+export const FirebaseDb = getFirestore(FirebaseApp)

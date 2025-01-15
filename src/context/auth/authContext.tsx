@@ -1,3 +1,4 @@
+import type { User } from 'firebase/auth'
 import type { IAuthStateContext } from '@/types'
 
 import { useNavigate } from 'react-router'
@@ -12,8 +13,9 @@ import {
 
 export const AuthContext = createContext<IAuthStateContext | undefined>(undefined)
 
-const initialState: Pick<IAuthStateContext, 'status' | 'userId'> = {
+const initialState: Pick<IAuthStateContext, 'status' | 'userId' | 'userName'> = {
   userId: null,
+  userName: null,
   status: 'checking',
 }
 
@@ -31,14 +33,14 @@ export const AuthProvider = ({ children }: IElement) => {
 
   const handleLogOut = async () => {
     logoutFirebase()
-    setSession({ userId: null, status: 'no-authenticated' })
+    setSession({ userId: null, status: 'no-authenticated', userName: null })
     navigate('/')
   }
 
-  const validateAuth = (userId: string | undefined) => {
-    if (userId) {
-      setSession({ userId, status: 'authenticated' })
-      return userId
+  const validateAuth = (user: User | null) => {
+    if (user?.uid) {
+      setSession({ userId: user.uid, status: 'authenticated', userName: user.displayName })
+      return user.uid
     } else {
       handleLogOut()
       return null
@@ -49,32 +51,30 @@ export const AuthProvider = ({ children }: IElement) => {
 
   const handleLoginWithGoogle = async () => {
     checking()
-    const userId = await singInWithGoogle()
-    if (validateAuth(userId as string)) {
+    const user = await singInWithGoogle()
+    if (validateAuth(user)) {
       navigate('/home')
-    } else {
-      navigate('/login')
     }
+
+    return null
   }
 
   const handleLoginWithCredentials = async (password: string, email: string) => {
     checking()
-    const userId = await loginWithCredentials({ email, password })
-    if (validateAuth(userId as string)) {
+    const user = await loginWithCredentials({ email, password })
+    if (validateAuth(user)) {
       navigate('/home')
-    } else {
-      navigate('/login')
     }
+    return null
   }
 
   const handleRegisterWithCredentials = async (password: string, email: string) => {
     checking()
-    const userId = await signInWithCredentials({ email, password })
-    if (validateAuth(userId as string)) {
+    const user = await signInWithCredentials({ email, password })
+    if (validateAuth(user)) {
       navigate('/home')
-    } else {
-      navigate('/login')
     }
+    return null
   }
 
   return (

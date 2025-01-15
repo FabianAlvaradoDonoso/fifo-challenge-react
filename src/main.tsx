@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router'
 
 import App from './App'
-import { routesSection } from './routes'
+import { routesSection } from './routes/sections'
 
 const router = createBrowserRouter([
   {

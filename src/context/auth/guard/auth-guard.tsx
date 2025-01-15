@@ -3,7 +3,11 @@ import { useState, useEffect } from 'react'
 import SpinnerIcon from '@/components/icons/spinnerIcon'
 import { useAuthContext } from '@/context/auth/useAuthContext'
 
-export const AuthLayout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+type GuardProps = {
+  children: React.ReactNode
+}
+
+export function AuthGuard({ children }: GuardProps) {
   const router = useNavigate()
 
   const { status } = useAuthContext()
