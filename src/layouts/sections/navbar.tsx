@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { useAuthContext } from '@/context/auth/useAuthContext'
 
 export const Navbar = () => {
@@ -5,11 +6,11 @@ export const Navbar = () => {
   return (
     <nav className="border-gray-200 bg-white dark:bg-gray-900">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-        <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
             FIFO Challenge
           </span>
-        </a>
+        </Link>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900">
             {userId && (
