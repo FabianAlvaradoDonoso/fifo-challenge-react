@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import SpinnerIcon from '@/components/icons/spinnerIcon'
 import { useAuthContext } from '@/context/auth/useAuthContext'
 
+import { Footer } from './sections/footer'
+import { Navbar } from './sections/navbar'
+
 export const AuthLayout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   const router = useNavigate()
 
@@ -45,9 +48,11 @@ export const AuthLayout = ({ children }: { children: JSX.Element | JSX.Element[]
 
   return (
     <div className="flex min-h-screen flex-col">
+      <Navbar />
       <main className="container mx-auto flex flex-grow items-center justify-center px-4 py-8">
         {children}
       </main>
+      <Footer />
     </div>
   )
 }

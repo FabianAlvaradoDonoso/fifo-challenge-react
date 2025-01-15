@@ -19,7 +19,7 @@ const Login = () => {
   }
 
   return (
-    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className="w-96 max-w-sm space-y-3 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800 dark:bg-gray-900/90">
       <h2 className="text-center text-2xl">Log in</h2>
       <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
         <div>
@@ -99,6 +99,12 @@ const Login = () => {
         Not a member?{' '}
         <Link to={paths.auth.register} className="font-semibold text-white/80 hover:underline">
           Click here
+        </Link>
+      </p>
+
+      <p className="text-center text-sm/6 text-gray-500">
+        <Link to={paths.auth.register} className="font-semibold text-white/80 hover:underline">
+          Login as a guess
         </Link>
       </p>
     </div>
