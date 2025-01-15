@@ -1,6 +1,6 @@
 export function Description() {
   return (
-    <section>
+    <section className="text-gray-900 dark:text-white">
       <h1 className="mb-4 text-2xl font-bold">FIFO Task Management Application</h1>
 
       <p className="mb-4">

@@ -1,6 +1,6 @@
 export function BusinessRules() {
   return (
-    <section>
+    <section className="text-gray-900 dark:text-white">
       <h2 className="mb-2 text-xl font-bold">Business Rules</h2>
       <ol className="mb-6 list-decimal space-y-1 pl-6">
         <li>Avoid duplicates: Adding repeated tasks is not allowed.</li>

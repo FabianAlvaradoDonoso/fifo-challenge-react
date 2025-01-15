@@ -1,6 +1,6 @@
 export function Technologies() {
   return (
-    <section>
+    <section className="text-gray-900 dark:text-white">
       <h2 className="mb-2 text-xl font-bold">Technologies Used</h2>
       <ul className="mb-6 list-disc space-y-2 pl-6">
         <li>

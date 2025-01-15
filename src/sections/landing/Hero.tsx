@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { paths } from '@/routes/paths'
 import { Fragment } from 'react/jsx-runtime'
+import { Footer } from '@/layouts/sections/footer'
 import GithubIcon from '@/components/icons/githubIcon'
 import SignInIcon from '@/components/icons/signInIcon'
 
@@ -59,17 +60,17 @@ export function Hero() {
           respecting business rules such as preventing duplicate tasks and processing them according
           to their insertion order.
         </p>
-        <div className="flex flex-col space-x-2 space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+        <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-2 sm:space-y-0">
           <Link
             to={paths.auth.login}
             className="inline-flex items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
           >
+            <SignInIcon height={24} width={24} className="mr-1" />
             Sign In
-            <SignInIcon height={24} width={24} className="ml-2" />
           </Link>
           <a
             href="https://github.com/FabianAlvaradoDonoso/fifo-challenge-react"
-            className="mb-2 me-2 inline-flex items-center rounded-lg bg-[#24292F] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#24292F]/90 focus:outline-none focus:ring-4 focus:ring-[#24292F]/50 dark:hover:bg-[#050708] dark:focus:ring-gray-500"
+            className="inline-flex items-center justify-center rounded-lg bg-[#24292F] px-5 py-3 text-center text-base font-medium text-white hover:bg-[#24292F]/90 focus:outline-none focus:ring-4 focus:ring-[#24292F]/50 dark:hover:bg-[#050708] dark:focus:ring-gray-500"
             target="_blank"
             rel="noreferrer"
           >
@@ -78,6 +79,7 @@ export function Hero() {
           </a>
         </div>
       </div>
+      <Footer />
     </section>
   )
 }

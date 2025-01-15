@@ -15,7 +15,7 @@ function App({ children }: AppProps) {
     <ConfigProvider>
       <AuthProvider>
         <FifoProvider>
-          <div className="min-h-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] bg-repeat">
+          <div className="min-h-screen bg-[#ffffff] bg-[radial-gradient(#00000033_1px,#ffffff_1px)] bg-[size:20px_20px] bg-repeat dark:bg-[#000000] dark:bg-[radial-gradient(#ffffff33_1px,#00091d_1px)]">
             {children}
             <Toaster richColors position="bottom-right" />
           </div>

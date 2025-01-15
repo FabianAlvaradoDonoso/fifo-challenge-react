@@ -12,6 +12,7 @@ const MoonIcon = (props: Props) => (
     viewBox="0 0 24 24"
     width={props.width}
     height={props.height}
+    color={props.color}
   >
     <path
       stroke={props.color}

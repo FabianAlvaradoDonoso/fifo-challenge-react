@@ -16,6 +16,7 @@ export const ConfigProvider = ({ children }: IElement) => {
 
   const handleTogglethemMode = () => {
     setThemeMode((prev) => (prev === 'dark' ? 'light' : 'dark'))
+    document.body.classList.toggle('dark')
   }
 
   return (

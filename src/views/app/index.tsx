@@ -38,16 +38,16 @@ const IndexPage = () => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="mb-10 w-auto text-center text-xl font-semibold text-gray-900 underline dark:text-white">
+      <h1 className="mb-5 w-auto text-center text-xl font-semibold text-gray-800 underline md:mb-10 dark:text-gray-300">
         Add items to the list
       </h1>
-      <div className="flex w-auto flex-row items-center space-x-10">
-        <section className="w-96 max-w-sm space-y-3 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800 dark:bg-gray-900/90">
+      <div className="flex w-auto flex-col space-y-5 md:flex-row md:items-center md:space-x-10">
+        <section className="w-72 max-w-sm space-y-3 rounded-lg border border-gray-200 bg-white p-6 shadow lg:w-96 dark:border-gray-700 dark:bg-gray-800 dark:bg-gray-900/90">
           <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
             <input
               type="text"
               id="item"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="Enter item: e.g. 'Buy milk'"
               value={item}
               onChange={(e) => setItem(e.target.value)}
@@ -81,14 +81,16 @@ const IndexPage = () => {
             Attend item
           </button>
         </section>
-        <section className="w-96 max-w-sm space-y-3 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800 dark:bg-gray-900/90">
-          <h2 className="w-auto text-center text-lg font-semibold text-gray-900 dark:text-white">
+        <section className="w-72 max-w-sm space-y-3 rounded-lg border border-gray-200 bg-white p-6 shadow lg:w-96 dark:border-gray-700 dark:bg-gray-800 dark:bg-gray-900/90">
+          <h2 className="w-auto text-center text-lg font-semibold text-gray-900 dark:text-gray-300">
             Items
           </h2>
           {data.items.length === 0 ? (
-            <p className="text-center text-sm text-gray-900 dark:text-white">No items added yet</p>
+            <p className="text-center text-sm text-gray-900 dark:text-gray-300">
+              No items added yet
+            </p>
           ) : (
-            <ul className="w-auto rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+            <ul className="w-auto rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
               {data.items.map((el, index) => (
                 <li
                   key={index}
