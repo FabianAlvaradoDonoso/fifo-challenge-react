@@ -20,7 +20,7 @@ const Login = () => {
 
   return (
     <div className="w-96 max-w-sm space-y-3 rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800 dark:bg-gray-900/90">
-      <h2 className="text-center text-2xl">Log in</h2>
+      <h2 className="text-center text-2xl text-gray-800 dark:text-white">Log in</h2>
       <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
         <div>
           <label
@@ -37,7 +37,7 @@ const Login = () => {
               autoComplete="email"
               onChange={handleChange}
               required
-              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-gray-300"
             />
           </div>
         </div>
@@ -59,7 +59,7 @@ const Login = () => {
               onChange={handleChange}
               autoComplete="current-password"
               required
-              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+              className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-gray-300"
             />
           </div>
         </div>
@@ -95,15 +95,21 @@ const Login = () => {
         </div>
       </form>
 
-      <p className="mt-10 text-center text-sm/6 text-gray-500">
+      <p className="mt-10 text-center text-sm/6 text-gray-400">
         Not a member?{' '}
-        <Link to={paths.auth.register} className="font-semibold text-white/80 hover:underline">
+        <Link
+          to={paths.auth.register}
+          className="font-semibold text-gray-800/80 hover:underline dark:text-white/80"
+        >
           Click here
         </Link>
       </p>
 
-      <p className="text-center text-sm/6 text-gray-500">
-        <button className="font-semibold text-white/80 hover:underline" onClick={handleLoginGuest}>
+      <p className="text-center text-sm/6">
+        <button
+          className="font-semibold text-gray-800/80 hover:underline dark:text-white/80"
+          onClick={handleLoginGuest}
+        >
           Login as a guest
         </button>
       </p>

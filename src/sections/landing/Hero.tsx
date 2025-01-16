@@ -4,6 +4,7 @@ import { Fragment } from 'react/jsx-runtime'
 import { Footer } from '@/layouts/sections/footer'
 import GithubIcon from '@/components/icons/githubIcon'
 import SignInIcon from '@/components/icons/signInIcon'
+import { ToogleMode } from '@/components/toggle-mode/toggle-mode'
 
 const technologies = [
   {
@@ -31,7 +32,7 @@ const technologies = [
 export function Hero() {
   return (
     <section>
-      <div className="mx-auto max-w-screen-xl bg-white px-4 py-8 text-center lg:py-16 dark:bg-gray-900">
+      <div className="mx-auto max-w-screen-xl bg-white px-4 py-8 text-center shadow lg:py-16 dark:bg-gray-900">
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           FIFO Challenge
         </h1>
@@ -77,6 +78,7 @@ export function Hero() {
             <GithubIcon height={24} width={24} className="mr-2" />
             GitHub Repo
           </a>
+          <ToogleMode />
         </div>
       </div>
       <Footer />

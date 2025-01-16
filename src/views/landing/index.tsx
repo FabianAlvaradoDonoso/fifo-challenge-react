@@ -9,8 +9,11 @@ const IndexPage = () => (
     <Hero />
     <div className="mx-auto max-w-5xl p-6">
       <Description />
+      <hr className="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
       <Features />
+      <hr className="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
       <Technologies />
+      <hr className="my-8 h-px border-0 bg-gray-200 dark:bg-gray-700" />
       <BusinessRules />
     </div>
   </>

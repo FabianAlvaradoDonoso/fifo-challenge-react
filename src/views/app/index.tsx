@@ -50,20 +50,21 @@ const IndexPage = () => {
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="Enter item: e.g. 'Buy milk'"
               value={item}
+              autoComplete="off"
               onChange={(e) => setItem(e.target.value)}
               required
             />
             <button
               type="submit"
               disabled={item === ''}
-              className={`${item === '' ? 'cursor-not-allowed opacity-50' : ''} w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}
+              className={`${item === '' ? 'cursor-not-allowed bg-blue-500/60' : 'bg-blue-500 hover:bg-blue-700'} w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium`}
             >
               Add Item
             </button>
           </form>
           <button
             disabled={data.items.length === 0}
-            className={`${data.items.length === 0 ? 'cursor-not-allowed opacity-50' : ''} w-full rounded-lg border border-red-700 px-5 py-2.5 text-center text-sm font-medium text-red-700 hover:bg-red-800 hover:text-white dark:border-red-800 dark:text-red-500 dark:hover:bg-red-700 dark:hover:text-white dark:focus:ring-red-800`}
+            className={`${data.items.length === 0 ? 'cursor-not-allowed border-red-500/60 text-red-500/60' : 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white dark:border-red-800 dark:text-red-800 dark:hover:bg-red-800 dark:hover:text-white'} w-full rounded-lg border px-5 py-2.5 text-center text-sm font-medium`}
             onClick={() => {
               if (data.items.length === 0) {
                 return
