@@ -3,24 +3,23 @@ import type { RouteObject } from 'react-router'
 import { Outlet } from 'react-router'
 import { lazy, Suspense } from 'react'
 import { paths } from '@/routes/paths'
-import { MainLayout } from '@/layouts/MainLayout'
 
 // ----------------------------------------------------------------------
 
-const IndexPage = lazy(() => import('@/views/app/index'))
+const IndexPage = lazy(() => import('@/views/landing/index'))
 
 // ----------------------------------------------------------------------
 
-const AppLayout = () => (
+const LandingLayout = () => (
   <Suspense fallback={<>...</>}>
     <Outlet />
   </Suspense>
 )
 
-export const appRoutes: RouteObject[] = [
+export const landingRoutes: RouteObject[] = [
   {
-    path: paths.home,
-    element: <MainLayout>{AppLayout()}</MainLayout>,
+    path: paths.landing,
+    element: <>{LandingLayout()}</>,
     children: [{ element: <IndexPage />, index: true }],
   },
 ]
