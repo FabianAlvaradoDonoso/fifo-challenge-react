@@ -1,8 +1,5 @@
 import { Toaster } from 'sonner'
-import { AuthProvider } from '@/context/auth/authContext'
-
-import { FifoProvider } from './context/fifo/fifoContext'
-import { ConfigProvider } from './context/config/configContext'
+import { ThemeProvider } from '@/components/theme-provider'
 
 // ----------------------------------------------------------------------
 
@@ -12,17 +9,12 @@ type AppProps = {
 
 function App({ children }: AppProps) {
   return (
-    <ConfigProvider>
-      <AuthProvider>
-        <FifoProvider>
-          <div className="min-h-screen bg-[#ffffff] bg-[radial-gradient(#00000033_1px,#ffffff_1px)] bg-[size:20px_20px] bg-repeat dark:bg-[#000000] dark:bg-[radial-gradient(#ffffff33_1px,#00091d_1px)]">
-            {children}
-            <Toaster richColors position="bottom-right" />
-          </div>
-        </FifoProvider>
-      </AuthProvider>
-    </ConfigProvider>
+    <ThemeProvider>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] dark:bg-black dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)]">
+        {children}
+        <Toaster richColors position="bottom-right" />
+      </div>
+    </ThemeProvider>
   )
 }
-
 export default App

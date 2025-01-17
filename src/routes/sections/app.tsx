@@ -2,12 +2,13 @@ import type { RouteObject } from 'react-router'
 
 import { Outlet } from 'react-router'
 import { lazy, Suspense } from 'react'
-import { paths } from '@/routes/paths'
 import { MainLayout } from '@/layouts/MainLayout'
+
+import { paths } from '../paths'
 
 // ----------------------------------------------------------------------
 
-const IndexPage = lazy(() => import('@/views/app/index'))
+const IndexPage = lazy(() => import('@/pages/home'))
 
 // ----------------------------------------------------------------------
 
@@ -20,7 +21,16 @@ const AppLayout = () => (
 export const appRoutes: RouteObject[] = [
   {
     path: paths.home,
-    element: <MainLayout>{AppLayout()}</MainLayout>,
-    children: [{ element: <IndexPage />, index: true }],
+    element: AppLayout(),
+    children: [
+      {
+        element: (
+          <MainLayout>
+            <IndexPage />
+          </MainLayout>
+        ),
+        index: true,
+      },
+    ],
   },
 ]
